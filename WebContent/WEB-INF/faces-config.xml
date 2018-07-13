@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+    version="1.2">
+
+	<managed-bean>
+		<managed-bean-name>filmeBacking</managed-bean-name>
+		<managed-bean-class>br.com.choice.locadora.backingbean.FilmeBacking</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>vendedorBacking</managed-bean-name>
+		<managed-bean-class>br.com.choice.locadora.backingbean.VendedorBacking</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>relatorioBacking</managed-bean-name>
+		<managed-bean-class>br.com.choice.locadora.backingbean.RelatorioBacking</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- REGRAS NAVEGAÇÃO MENU -->
+	<navigation-rule>
+		<navigation-case>
+			<from-action>#{filmeBacking.cadastrarFilme}</from-action>
+			<to-view-id>/cadastraFilme.jsp</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{vendedorBacking.cadastrarVendedor}</from-action>
+			<to-view-id>/cadastraVendedor.jsp</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{filmeBacking.consultarFilme}</from-action>
+			<to-view-id>/consultaFilme.jsp</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-action>#{vendedorBacking.consultarVendedor}</from-action>
+			<to-view-id>/consultaVendedor.jsp</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+		<navigation-case>
+			<from-action>#{vendedorBacking.alterarVendedor}</from-action>
+			<to-view-id>/alterarVendedor.jsp</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+	</navigation-rule>
+
+	<!-- REGRAS NAVEGAÇÃO CADASTRA FILME -->
+	<navigation-rule>
+		<from-view-id>/cadastraFilme.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>cancelar</from-outcome>
+			<to-view-id>/index.jsp</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- REGRAS NAVEGAÇÃO CADASTRA VENDEDOR -->
+	<navigation-rule>
+		<from-view-id>/cadastraVendedor.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>cancelar</from-outcome>
+			<to-view-id>/index.jsp</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- REGRAS NAVEGAÇÃO ALTERA VENDEDOR -->
+	<navigation-rule>
+		<from-view-id>/alterarVendedor.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>cancelar</from-outcome>
+			<to-view-id>/consultaVendedor.jsp</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- REGRAS NAVEGAÇÃO CONSULTA VENDEDOR -->
+	<navigation-rule>
+		<from-view-id>/consultaVendedor.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>alterar</from-outcome>
+			<to-view-id>/alterarVendedor.jsp</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/consultaVendedor.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>cancelar</from-outcome>
+			<to-view-id>/index.jsp</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>exibeRelatorio</from-outcome>
+			<to-view-id>/relatorio.jspx</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+
+</faces-config>

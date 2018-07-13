@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13951717237690" configfile="/LocadoraHibernate/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" id="pf13951717308691" outlinks="pf13951717308692 pf13951717308693 pf13951717308694 pf13951717308695 pf13951717308696" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastraFilme" id="pf13951717308697" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf13951717308698" inlinks="pf13951717308692" path="/cadastraFilme.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastraVendedor" id="pf13951717308699" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf139517173086910" inlinks="pf13951717308693" path="/cadastraVendedor.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="consultaFilme" id="pf139517173086911" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf13951717308694" path="/consultaFilme.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="consultaVendedor" id="pf139517173086912" referenceLink="//@navigationRule.5/@fromViewId|" outlinks="pf139517173086913 pf139517173086914 pf139517173086915" inlinks="pf13951717308695 pf139517173086916" path="/consultaVendedor.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="alterarVendedor" id="pf139517173086917" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" outlinks="pf139517173086916" inlinks="pf13951717308696 pf139517173086913" path="/alterarVendedor.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="index" id="pf139517173086918" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" inlinks="pf13951717308698 pf139517173086910 pf139517173086914" path="/index.jsp"/>
+  <nodes xsi:type="pageflow:PFPage" name="relatorio" id="pf139517173086919" referenceLink="//@navigationRule.5/@navigationCase.1/@toViewId|" inlinks="pf139517173086915" path="/relatorio.jspx"/>
+  <links id="pf13951717308692" target="pf13951717308697" source="pf13951717308691" redirect="true" fromaction="#{filmeBacking.cadastrarFilme}"/>
+  <links id="pf13951717308693" target="pf13951717308699" source="pf13951717308691" redirect="true" fromaction="#{vendedorBacking.cadastrarVendedor}"/>
+  <links id="pf13951717308694" target="pf139517173086911" source="pf13951717308691" redirect="true" fromaction="#{filmeBacking.consultarFilme}"/>
+  <links id="pf13951717308695" target="pf139517173086912" source="pf13951717308691" redirect="true" fromaction="#{vendedorBacking.consultarVendedor}"/>
+  <links id="pf13951717308696" target="pf139517173086917" source="pf13951717308691" redirect="true" fromaction="#{vendedorBacking.alterarVendedor}"/>
+  <links id="pf13951717308698" target="pf139517173086918" source="pf13951717308697" outcome="cancelar" redirect="true"/>
+  <links id="pf139517173086910" target="pf139517173086918" source="pf13951717308699" outcome="cancelar" redirect="true"/>
+  <links id="pf139517173086916" target="pf139517173086912" source="pf139517173086917" outcome="cancelar" redirect="true"/>
+  <links id="pf139517173086913" target="pf139517173086917" source="pf139517173086912" outcome="alterar" redirect="true"/>
+  <links id="pf139517173086914" target="pf139517173086918" source="pf139517173086912" outcome="cancelar" redirect="true"/>
+  <links id="pf139517173086915" target="pf139517173086919" source="pf139517173086912" outcome="exibeRelatorio"/>
+</pageflow:Pageflow>
